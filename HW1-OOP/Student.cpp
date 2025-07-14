@@ -2,9 +2,9 @@
 
 Student::Student()
 {
-    strcpy_s(fullName, 100, "No Name");
+    fullName = new char[10] {"No Name"};;
     averageMark = 0.0;
-    strcpy_s(schoolName, 100, "No School");
+    schoolName = new char[10] {"No School"};
     groupNumber = 0;
     cout << "Student() " << fullName << endl;
 }
