@@ -12,7 +12,7 @@ int main()
 
     NN.setFullName("Petrov Ivan");
     NN.setAverageMark(10.6);
-    NN.setSchoolName("Kherkiv School #1");
+    NN.setSchoolName("Kharkiv School #1");
     NN.setGroupNumber(26);
     NN.showInfo();
 

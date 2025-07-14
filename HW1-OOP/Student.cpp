@@ -2,25 +2,35 @@
 
 Student::Student()
 {
-    fullName = new char[10] {"No Name"};;
+    fullName = new char[30] {"No Name"};
     averageMark = 0.0;
-    schoolName = new char[10] {"No School"};
+    schoolName = new char[30] {"No School"};
     groupNumber = 0;
     cout << "Student() " << fullName << endl;
 }
 
-Student::Student(const char* fullName, float averageMark, const char* schoolName, int groupNumber)
+Student::Student(const char* full_Name, float averageMark, const char* school_Name, int groupNumber)
 {
-    strcpy_s(this->fullName, 100, fullName);
+    int size = strlen(full_Name) + 1;
+    fullName = new char[size];
+    strcpy_s(fullName, size, full_Name);
+
     this->averageMark = averageMark;
-    strcpy_s(this->schoolName, 100, schoolName);
+
+    size = strlen(school_Name) + 1;
+    schoolName = new char[size];
+    strcpy_s(schoolName, size, school_Name);
+
     this->groupNumber = groupNumber;
+
     cout << "Student(name, mark, school, group): " << fullName << endl;
 }
 
 Student::~Student()
 {
     cout << "~Student() " << fullName << endl;
+    delete[] fullName;
+    delete[] schoolName;
 }
 
 void Student::showInfo()
@@ -33,7 +43,10 @@ void Student::showInfo()
 
 void Student::setFullName(const char* fullName)
 {
-    strcpy_s(this->fullName, 100, fullName);
+    delete[] this->fullName; 
+    int size = strlen(fullName) + 1;
+    this->fullName = new char[size];
+    strcpy_s(this->fullName, size, fullName);
 }
 
 const char* Student::getFullName()
@@ -56,7 +69,10 @@ float Student::getAverageMark()
 
 void Student::setSchoolName(const char* schoolName)
 {
-    strcpy_s(this->schoolName, 100, schoolName);
+    delete[] this->schoolName; 
+    int size = strlen(schoolName) + 1;
+    this->schoolName = new char[size];
+    strcpy_s(this->schoolName, size, schoolName);
 }
 
 const char* Student::getSchoolName()
